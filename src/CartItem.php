@@ -190,8 +190,9 @@ class CartItem implements Arrayable, Jsonable
      */
     public function setQuantity($qty)
     {
+
         if(empty($qty) || ! is_numeric($qty))
-            throw new \InvalidArgumentException('Please supply a valid quantity.');
+            throw new \InvalidArgumentException('Please supply a valid quantity. ');
 
         $this->qty = $qty;
     }
@@ -284,14 +285,18 @@ class CartItem implements Arrayable, Jsonable
         }
 
         if($attribute === 'discount') {
+
+            return $this->taxRate;
+
             //Скидки
-            $maxTaxTotal = -26; //Скидки не могут превышать
+            /*$maxTaxTotal = -26; //Скидки не могут превышать
             if($this->options->stop_price == 1){
                 //$this->taxRate = -20;
                 $this->taxRate = 0;
                 //return -20;
                 return 0;
             }
+
             if($this->taxRate < $maxTaxTotal){
                 return $this->taxRate;
             }else{
@@ -311,11 +316,11 @@ class CartItem implements Arrayable, Jsonable
                 return $this->taxRate;
             }
         }
-           // return $this->taxSetMax;  
+           // return $this->taxSetMax;  */
         }
         
         if($attribute === 'total') {
-            return $this->qty * ($this->priceTax);
+             return $this->qty * ($this->priceTax);
         }
 
         if($attribute === 'tax') {
