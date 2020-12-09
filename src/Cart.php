@@ -395,9 +395,14 @@ class Cart
         $this->session->put($this->instance, $content);
 
         $this->instance($currentInstance);
+/*
+
+Это очень странная логика.
+Пользователь авторизовался, загрузил корзину, потом ушел с сайта и в базе его корзины больше нет.
 
         $this->getConnection()->table($this->getTableName())
             ->where('identifier', $identifier)->delete();
+            */
     }
 
     /**
